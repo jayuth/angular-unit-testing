@@ -1,0 +1,34 @@
+Chapter 2:
+Angular Unit Testing
+2 types of unit testing in Angular
+-Isolated test - a single unit/class
+-Intergartion test - create and test in a context of Angular module so we can test a class with its template
+--shallow - test a single class 
+--deep - test both parent and child components 
+
+Automated testing
+-unit testing - a single unit of code, while in development, unit = single class such as a user component
+-end to end testing - test against live running app, done through manipulating and automating a browser to do things such as click a button
+-integration or functional testing - in between, this part of this app works with another part of tha app suchas user component and user service
+
+Mocking 
+-since a component class usually depends on other classes such as a user component depends on the user service class to be able to function
+but our focus is a unit test. we should test only a use class so we mock a user service to do whatever we want 
+
+Types of Mocks
+-dummies
+-stubs
+-spies
+-true mocks
+
+Tools for testing
+Karma - test runner - execute our code in a broswer
+Jasmine - create a mock
+
+// keep hero that is not equal to the 'passed-in hero' parameter
+
+if your method returns an observable, then use mock service
+
+-duplicating code is ok in testing becuase we want to tell the story
+
+
