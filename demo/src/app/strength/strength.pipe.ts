@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class StrengthPipe implements PipeTransform {
   transform(value: number): string {
-    if(value < 10) {
+    if(value < 10 && value > 0) {
       return value + " (weak)";
     } else if(value >= 10 && value < 20) {
       return value + " (strong)";

@@ -33,6 +33,7 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(hero: Hero): void {
+    // keep hero that is not equal to the 'passed-in hero' parameter
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
   }
