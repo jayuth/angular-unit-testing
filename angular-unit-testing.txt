@@ -25,10 +25,54 @@ Tools for testing
 Karma - test runner - execute our code in a broswer
 Jasmine - create a mock
 
-// keep hero that is not equal to the 'passed-in hero' parameter
+this.heroes = this.heroes.filter(h => h !== hero);
+-keep hero that is not equal to the 'passed-in hero' parameter
 
 if your method returns an observable, then use mock service
 
 -duplicating code is ok in testing becuase we want to tell the story
 
+Chapter 4: shallow integration tests 
+-test both component and template using TestBed 
+--create a special module for etsting purposes
+
+ComponentFixure - a wrapper for a component, allows us to create an instance of that component and allows us to access instance properties 
+
+NO_ERRORS_SCHEMA
+-hide errors in our template e.g. mispell <buttons> instead of <button>. Karma will not be aware of this 
+-ignore unknown attributes and elements in the html but using this will hide other errors such as we wion't get notified if we misuse directive 
+
+***important - check if the template requires bindings such as interpolation e.g. {{ hero.name }}. 
+In our test, we need to let Angular know about that using fixure.detectChanges(). 
+Otherwise, we will get an empty string of that property
+
+Scenario:
+Before implementing detectChanges():
+-we got an error becuase the testing module doesn't know about the routerLink directive in the template
+-we got an empty string because we didn't tell Angular to actually implement the bindings
+
+-nativeElement - exposes DOM API
+-debugElement - points to the root of our template
+
+debugElement is similar to fixure.componentInstance. debugElement focuses on DOM elements allowing us to access and debug elements by its id or tags
+fixure.componentInstance works with the component class allowing us to access instance properties
+
+-More complex shallow integration test and complex component
+e.g. heroes.component.ts template has a child directive and service dependency
+
+TestBed:  
+In the intergation test, if we test a component method that requires us to touch the teamplate and perform
+data binding or the template includes a child component, we need to implement TestBed.
+
+Scenario:
+Before implementing a mock child component in in heroes.component.shaloow.spec.ts, we saw the following error:
+-"Can't bind to 'hero' since it isn't a known property of 'app-hero'"
+-this is because <app-hero> is not part of a module. 
+-in the heroes html template, we have <app-hero> tag. This tag refers to a child component class
+-To fix this, we have to create a fake child component and import it to the test module
+
+**how to read Karma error:
+-Expected 3 to be 2. 3 is an incorrect value
+
+  
 
