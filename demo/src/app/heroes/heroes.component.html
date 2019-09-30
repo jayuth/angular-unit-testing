@@ -12,6 +12,7 @@
 
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
+    <!-- pass in data to the HeroComponent class (child)-->
     <app-hero [hero]="hero" (delete)="delete(hero)"></app-hero>
   </li>
 </ul>

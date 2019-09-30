@@ -7,7 +7,10 @@ import { Hero } from '../hero';
   styleUrls:  ['./hero.component.css']
 })
 export class HeroComponent {
+  // recieve data from the parent HeroesComponent class
   @Input() hero: Hero;
+
+  // send data back to the parent class
   @Output() delete = new EventEmitter();
 
   onDeleteClick($event): void {

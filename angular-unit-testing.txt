@@ -65,7 +65,7 @@ In the intergation test, if we test a component method that requires us to touch
 data binding or the template includes a child component, we need to implement TestBed.
 
 Scenario:
-Before implementing a mock child component in in heroes.component.shaloow.spec.ts, we saw the following error:
+Before implementing a mock child component in the 'heroes.component.shaloow.spec.ts', we saw the following error:
 -"Can't bind to 'hero' since it isn't a known property of 'app-hero'"
 -this is because <app-hero> is not part of a module. 
 -in the heroes html template, we have <app-hero> tag. This tag refers to a child component class
@@ -74,5 +74,26 @@ Before implementing a mock child component in in heroes.component.shaloow.spec.t
 **how to read Karma error:
 -Expected 3 to be 2. 3 is an incorrect value
 
-  
+Chapter 5: Dee integration tests
+in the deep test, we will test against a real child component. This way you check the setup and collaboration of a parent and a child class.
+e.g. 
+-check if the HeroesComponent is correctly inputing the hero to the child HeroComponent 
+-check that the HeroesComponent is correctly listening to the delete event on the child HeroComponent      
+
+***important: if the template includes an attribute, you need to import it to the component module. 
+e.g. a routerLink attribute needs 
+
+In Angular, a directive is actally the parent class for both attribute directives and components such as HeroComponent
+
+When writing a unit test, consider
+1. a constructor of that class carries any parameters? such as a service
+2. mock a service if any 
+
+When testing a service...
+-inject a service inside an it() function like this:
+ inject([HeroService, httpTestingController], 
+                (service: HeroService, controller: HttpTestingController)
+-OR declare a variable like this - httpTestingController = TestBed.get(HttpTestingController)
+-
+
 
