@@ -13,6 +13,7 @@
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <!-- pass in data to the HeroComponent class (child)-->
+    <!--when the delete method from the child component is raised, the delete(Hero) from the parent component will be called-->
     <app-hero [hero]="hero" (delete)="delete(hero)"></app-hero>
   </li>
 </ul>

@@ -10,11 +10,12 @@ export class HeroComponent {
   // recieve data from the parent HeroesComponent class
   @Input() hero: Hero;
 
-  // send data back to the parent class
+  // let the paraent class know that the event has been raised
   @Output() delete = new EventEmitter();
 
   onDeleteClick($event): void {
     $event.stopPropagation();
+    // raising an event
     this.delete.next();
   }
 }

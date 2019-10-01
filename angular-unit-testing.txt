@@ -89,11 +89,23 @@ When writing a unit test, consider
 1. a constructor of that class carries any parameters? such as a service
 2. mock a service if any 
 
-When testing a service...
+When testing a service, we need HttpClient and HttpController. Then, ... 
 -inject a service inside an it() function like this:
  inject([HeroService, httpTestingController], 
                 (service: HeroService, controller: HttpTestingController)
 -OR declare a variable like this - httpTestingController = TestBed.get(HttpTestingController)
--
+
+-use httpclient to make a get call with a specified URL
+
+-deep integration tests require you to dig into a child component using debugElement to find child component by css and directive
+
+returnValue is used to return an observable object
+
+-Testing with ActivatedRoute
+if our component template has a tag such <a routerLink="/detail/{{hero.id}}">, we will get a binding error. 
+To fix this, we can define our own <a> tag directive by 
+--name a selector = routerLink
+--simulate a click event on the <a> tag to simulate a routing event   
+
 
 
